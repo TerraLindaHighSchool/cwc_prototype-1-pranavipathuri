@@ -12,11 +12,15 @@ public class PlayerController : MonoBehaviour
 
     //Speed
     public float speed = 20;
+    public float turnSpeed;
+    public float horizontalInput;
 
     // Update is called once per frame
     void Update()
     {
         // Move the vehicle forward
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
+        transform.Translate(Vector3.right * Time.deltaTime * turnSpeed * horizontalInput);
+        horizontalInput = Input.GetAxis("Horizontal");
     }
 }
