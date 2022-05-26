@@ -18,19 +18,18 @@ public class PlayerController : MonoBehaviour
     private float speed = 20.0f;
      
    // private float turnSpeed = 45.0f;
-   // private float horizontalInput;
-   // private float forwardInput;
+   private float horizontalInput;
 
     // Update is called once per frame
     void Update()
     {
 
-        if(Input.GetKeyDown(KeyCode.A) && gameObject.transform.position.x > -5)
+        if (Input.GetKeyDown(KeyCode.A) && currentLane > -5)
         {
             currentLane -= 10;
         }
 
-        if(Input.GetKeyDown(KeyCode.D) && gameObject.transform.position.x < 5)
+        if(Input.GetKeyDown(KeyCode.D) && currentLane < 5)
         {
             currentLane += 10;
             
@@ -40,14 +39,14 @@ public class PlayerController : MonoBehaviour
             xPos = Mathf.MoveTowards(xPos, currentLane, 20 * Time.deltaTime);
             
         }
-        gameObject.transform.position = new Vector3(xPos, 0, 0);
-
+        gameObject.transform.position = new Vector3(xPos, gameObject.transform.position.y, gameObject.transform.position.z);
+        
         // Move the vehicle
 
         // horizontalInput = Input.GetAxis("Horizontal");
         // forwardInput = Input.GetAxis("Vertical");
         // Moves the car forward based on vertial input
-        // transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
+
         // Rotates the car based on horizontal input
         //  transform.Rotate(Vector3.up, turnSpeed * horizontalInput * Time.deltaTime);
 
