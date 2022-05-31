@@ -23,13 +23,12 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (Input.GetKeyDown(KeyCode.A) && currentLane > -5)
+        if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) && currentLane > -5)
         {
             currentLane -= 10;
         }
 
-        if(Input.GetKeyDown(KeyCode.D) && currentLane < 5)
+        if((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) && currentLane < 5)
         {
             currentLane += 10;
             
@@ -43,7 +42,6 @@ public class PlayerController : MonoBehaviour
         
         // Move the vehicle
 
-        // horizontalInput = Input.GetAxis("Horizontal");
         // forwardInput = Input.GetAxis("Vertical");
         // Moves the car forward based on vertial input
 

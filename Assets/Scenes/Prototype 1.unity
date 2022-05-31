@@ -181,6 +181,8 @@ MonoBehaviour:
   isGameActive: 1
   obstaclePrefab: {fileID: 5137391069060027838, guid: 78943e4b057eb0c4a86edf5458b53310,
     type: 3}
+  collectablePrefab: {fileID: 2741434261557265990, guid: ac42e6c34ccc3594ca6ba648ec2143d1,
+    type: 3}
 --- !u!1 &170076733
 GameObject:
   m_ObjectHideFlags: 0
