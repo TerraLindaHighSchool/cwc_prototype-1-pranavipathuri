@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -8,6 +9,10 @@ public class PlayerController : MonoBehaviour
     private float laneSpace = 10f;
     private float currentLane = 0;
     private float xPos = 0;
+    private int count = 0;
+    public TextMeshProUGUI scoreText;
+    public GameObject gameOverCanvas;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +28,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        scoreText.text = "Score: " + count;
         if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) && currentLane > -5)
         {
             currentLane -= 10;
@@ -48,5 +54,20 @@ public class PlayerController : MonoBehaviour
         // Rotates the car based on horizontal input
         //  transform.Rotate(Vector3.up, turnSpeed * horizontalInput * Time.deltaTime);
 
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("ENTERED");
+        if (other.gameObject.CompareTag("PickUp"))
+        {
+            Destroy(other.gameObject);
+            count++;
+            //SetCountText();
+        }
+        else if(other.gameObject.CompareTag("Obstacle"))
+        {
+            gameOverCanvas.SetActive(true);
+        }
     }
 }
