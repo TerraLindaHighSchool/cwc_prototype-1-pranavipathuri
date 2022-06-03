@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public bool isGameActive = true;
     private float spawnZ = 330;
-   private float minSpawn = 0.5f;
+    private float minSpawn = 0.5f;
     private float maxSpawn = 2;
     public GameObject obstaclePrefab;
     public GameObject collectablePrefab;
@@ -64,5 +65,10 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(Random.Range(minSpawn, maxSpawn));
             Instantiate(collectablePrefab, new Vector3(randomX, 2, 330), collectablePrefab.transform.rotation);
         }
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
